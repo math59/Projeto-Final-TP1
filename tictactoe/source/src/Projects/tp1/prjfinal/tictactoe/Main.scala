@@ -5,7 +5,7 @@ import scala.io.StdIn.readInt
 object Main extends App {
   var start = new Grid
   var player = new Player
-  var control = 0
+  var control = new GameOver
   private var i = 0
   private var j = 0
 
@@ -21,6 +21,7 @@ object Main extends App {
     j = readInt()
 
     start.play(i, j, player)
-    control += control
-  }while(control <= 9) // Condição só pra testar se tava alternando os turnos
+    control.verify(start.table)
+    control.count
+  }while(control.counter < 9) // Melhorar condição de game over?
 }
